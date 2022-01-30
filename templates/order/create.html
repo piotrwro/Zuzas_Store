@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+    {% block content %}
+    <h1>Utwórz zamówienie</h1>
+    <div class="order-info">
+    <h3>Your order</h3>
+        <h3>{{user.username}}</h3>
+
+<ul>
+{% for item in cart %}
+    <li>
+        {{ item.quantity }}x {{ item.product.name }}
+        <span>${{ item.total_price }}</span>
+        </li>
+{% endfor %}
+    </ul>
+        <p>Total: PLN{{ cart.get_total_price }}</p>
+     </div>
+        <form method="post" class="order-form">
+        {{ form.as_p }}
+        <p><input class="btn btn-primary" type="submit" value="Utwórz zamówienie"></p>
+        {% csrf_token %}
+        </form>
+{% endblock %}

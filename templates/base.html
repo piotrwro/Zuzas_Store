@@ -1,0 +1,85 @@
+{% load static %}
+
+
+<html lang="en">
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block title %}
+    <title>Artistic Store </title>
+    {% endblock %}
+    <link rel="stylesheet" href="/static/styles/bootstrap.min.css">
+
+    {% block scripts %}
+     <script src=" /static/scripts/bootstrap.min.js" async defer></script>
+    {% endblock %}
+{% block container %}
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #20c997">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/register/">Zarejestruj się</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="/">Home</a>
+
+        <a class="nav-link disabled" href="#">Pricing</a>
+        <a class="nav-link"href="/admin/">Admin</a>
+   {% if user.is_authenticated %}
+<form id="logoutForm" action="logout/" method="post" class="navbar-right">
+    {% csrf_token %}
+    <ul class="nav navbar-nav navbar-right">
+        <li><span class="nav-link"> {{ user.username }}!</span></li>
+        <li><a  class = "nav-link" type=submit href="{% url "logout" %}">Log off</a></li>
+    </ul>
+</form>
+
+{% else %}
+        <a class="nav-link" href="/login/">Login</a>
+{% endif %}
+
+      </div>
+        <div id="subheader">
+            <div class="nav-link" style="align-content: end">
+                {% with total_items=cart|length %}
+                {% if total_items > 0  %}
+                Twój koszyk:
+                <a href="{% url "cart:cart_detail" %}" >
+                {{total_items}} item{{total_items|pluralize}},
+
+                </a>
+                {% else %}
+                Twój koszyk jest pusty
+                {% endif %}
+                {% endwith %}
+
+
+            </div>
+        </div>
+    </div>
+  </div>
+</nav>
+{% endblock %}
+
+</head>
+{% endblock %}
+
+<body>
+{% block content %}
+
+{% endblock %}
+{% block footer %}
+
+
+{% endblock %}
+
+</body>
+
+
+
+
+</html>

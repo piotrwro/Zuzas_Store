@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<h1 xmlns="http://www.w3.org/1999/html" xmlns:cart="http://www.w3.org/1999/xhtml">Twój koszyk</h1>
+{% if user.is_authenticated %}
+
+
+  <h2>{{user.username}}</h2>
+
+
+{% endif %}
+<table class="container-sm">
+    <thead>
+    <tr>
+        <th>Zdjęcie</th>
+        <th>Nazwa produktu</th>
+        <th>Ilość</th>
+        <th>Usuń</th>
+        <th>Cena/szt</th>
+        <th>Cena</th>
+    </tr>
+
+    </thead>
+    <tbody>
+    {% for item in cart %}
+    {% with product=item.product %}
+    <tr >
+        <td >
+            <a href="{{product.get_absolute_url}}" >
+            {% for image in product.images.all %}
+            {% if forloop.first %}
+            <img src=" /static/images/{{image.image}}" class="container-sm" style="width: 20%; height: 20%">
+            {% endif %}
+            {% endfor %}
+            </a>
+        </td>
+        <td>{{product.name}}</td>
+        <td>
+        <form action="{% url 'cart:cart_add' product.id %}" method="post">
+            {{ item.update_quantity_form.quantity }}
+            {{ item.update_quantity_form.override }}
+            <input type="submit" value="Update">
+            {% csrf_token %}
+        </form>
+
+        </td>
+        <td>
+            <form action="{% url 'cart:cart_remove' product.id %}" method="post">
+             {% csrf_token %}
+            <input type ="submit" value="Wyrzuć">
+            </form>
+        </td>
+        <td class="num">{{ item.price }} PLN</td>
+        <td class="num">{{ item.total_price }} PLN</td>
+    </tr>
+    {% endwith %}
+    {% endfor %}
+    <tr class="total" style="position: absolute">
+        <td>Total</td>
+        <td class="num">{{ cart.get_total_price }} PLN</td>
+    </tr>
+
+    </tbody>
+</table>
+<p class="text-lg-right" style="font-size: medium">
+    <a href="{% url 'categories' %}" class="btn btn-primary" >Kontynuuj zakupy</a>
+
+    <a href="{% url 'cart:order_create' %}" class="btn btn-primary" >Zamów</a>
+
+</p>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}
+Dziękujemy
+{% endblock %}
+{% block content %}
+<h1>Dziękujemy</h1>
+<p>Twoje zamówienie zostało wystawione. Numer twojego zamówienia to:
+<strong>{{ cart_order.id }}</strong>.</p>
+<a href="{% url 'main_page' %}" class="btn btn-primary" >Powrót do strony głównej</a>
+{% endblock %}

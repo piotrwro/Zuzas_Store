@@ -1,0 +1,40 @@
+
+
+{% extends 'base.html'%}
+
+
+
+{% block content %}
+ <div class="container-md" >
+      <!--Section: Content-->
+      <section class="text-center text-md-start">
+        <h4 class="mb-5"><strong>Kategoria: {{category_name.name}}</strong></h4>
+      </section>
+ {% for product in products %}       <!-- Post -->
+        <div class="row"style="width: 50%; height: 30%;">
+          <div class="col-md-4 mb-4">
+            <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
+              {% for image in product.images.all %}
+                {% if forloop.first %}
+                <img src="/static/images/{{ image.image }}" class="img-fluid" />
+                {% endif %}
+                {% endfor %}
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-md-8 mb-4">
+            <h5>{{product.name}}</h5>
+            <p>
+              {{product.description}}
+            </p>
+            <p class="card-text">Cena {{product.price}} PLN</p>
+            <a href="/product/{{ product.id }}/ " class="btn btn-primary">Zobacz szczegóły</a>
+
+          </div>
+        </div>
+ {% endfor %}
+      </div>
+ {% endblock %}

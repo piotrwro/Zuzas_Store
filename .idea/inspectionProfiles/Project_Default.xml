@@ -1,0 +1,51 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="7">
+            <item index="0" class="java.lang.String" itemvalue="nobr" />
+            <item index="1" class="java.lang.String" itemvalue="noembed" />
+            <item index="2" class="java.lang.String" itemvalue="comment" />
+            <item index="3" class="java.lang.String" itemvalue="noscript" />
+            <item index="4" class="java.lang.String" itemvalue="embed" />
+            <item index="5" class="java.lang.String" itemvalue="script" />
+            <item index="6" class="java.lang.String" itemvalue="h1" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="false" level="WARNING" enabled_by_default="false">
+      <option name="ignoredPackages">
+        <value>
+          <list size="0" />
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="store.store1.views.store1" />
+          <option value="store.user.views.user" />
+          <option value="store.user.forms.user" />
+          <option value="store.user.tests.test_user_view_profile.user" />
+          <option value="project.movielist.serializers.movielist" />
+          <option value="project.showtimes.models.Screening" />
+          <option value="project.showtimes.views.showtimes" />
+          <option value="project.showtimes.models.movielist" />
+          <option value="project.movielist.tests.utils.movielist" />
+          <option value="project.movielist.tests.tests.showtimes" />
+          <option value="project.movielist.tests.conftest.movielist" />
+          <option value="project.movielist.tests.tests.movielist" />
+          <option value="project.movielist.tests.tests.moviebase" />
+          <option value="project.movielist.tests.utils.showtimes" />
+          <option value="project.movielist.tests.utils.moviebase" />
+          <option value="project.coderslab.urls.exercises_app" />
+          <option value="project.exercises_app.views.exercises_app" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

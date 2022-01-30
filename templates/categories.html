@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+ <section class="text-center text-md-center">
+        <h4 class="mb-5"><strong>Kategorie</strong></h4>
+      </section>
+<div class="list-group">
+
+    {% for category in categories %}
+        {% if category.available == False %}
+    <a href="/categories/{{category.id}}/" class="list-group-item d-none">{{category.name}}</a>
+        {% else %}
+    <a href="/categories/{{category.id}}/" class="list-group-item list-group-item-action">{{category.name}}</a>
+        {% endif %}
+    {% endfor %}
+
+</div>
+ <a href="/" class="btn btn-primary">Powrót do strony głównej</a>
+
+
+
+{% endblock %}
